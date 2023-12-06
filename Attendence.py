@@ -8,13 +8,10 @@ class Attendence:
         
         self.process()
     
-    def process(self):
+    def process(self):        
+        students = Student.get_all_students()
 
-        cursor = self.mydb.cursor()
-        cursor.execute(f"Select * from class_{self.class_no}_{self.section}")
-        result = cursor.fetchall()
-
-        for student in result:
+        for student in students:
             student_name = f'{student[2]} {student[3]}'
             student_roll = student[1]
 

@@ -30,6 +30,7 @@ class Student:
         )
         self.class_no = class_no
         self.section = section_id
+        self.cursor = self.mydb.cursor()
 
     def attend(self, student, student_roll):
         no_of_days_present = student[4] + 1
@@ -39,6 +40,12 @@ class Student:
 
         self.cursor.execute(query)
         self.mydb.commit()
+    
+    def get_all_students(self):
+        self.cursor.execute(f"Select * from class_{self.class_no}_{self.section}")
+        result = self.cursor.fetchall()
+
+        return result
 
     def add(self, student_roll, first_name, last_name, present_days):
         calc = (present_days / 2.2)
@@ -48,7 +55,17 @@ class Student:
         self.mydb.commit()
     
     def remove(self, student_roll):
-        query = f''
+        query = f'DELETE from class_{self.class_no}_{self.section} WHERE Roll_no={student_roll}'
 
         self.cursor.execute(query)
         self.mydb.commit()
+    
+    def student_info(self, student_roll):
+        query = f'SELECT * from class_{self.class_no}_{self.section} WHERE Roll_no={student_roll}'
+        
+        self.cursor.execute(query)
+        student = self.cursor.fetchall()
+
+        
+
+

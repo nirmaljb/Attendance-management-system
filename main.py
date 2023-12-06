@@ -7,10 +7,10 @@ Agent = Auth()
 def admin():
     # ability to add students in according to class and section
     
-    # ability to remove students in accordint to class and section
+    # ability to remove student in according to class and section
 
     # ability to see the info of a specific student (days present, percentage of days present)
-    
+
     # ability to see the info of all students (days present, percentage of days present)
     pass
 

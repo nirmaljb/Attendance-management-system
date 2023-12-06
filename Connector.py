@@ -66,6 +66,14 @@ class Student:
         self.cursor.execute(query)
         student = self.cursor.fetchall()
 
-        
+        return student
+    
+    def all_student_info(self):
+        query = f'SELECT * from class_{self.class_no}_{self.section}'
+
+        self.cursor.execute(query)
+        students = self.cursor.fetchall()
+
+        return students
 
 
